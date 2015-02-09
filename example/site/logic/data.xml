@@ -1,0 +1,7 @@
+<moya xmlns="http://moyaproject.com"
+      xmlns:links="http://moyaproject.com/links">
+    <!-- Data tags go here -->
+    <links:link text="Social Link" url="/sociallinks/" />
+    <links:link text="Debug" from="debug" name="intro" if=".apps.debug" />
+</moya>
+
