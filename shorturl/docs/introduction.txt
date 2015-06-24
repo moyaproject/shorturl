@@ -1,0 +1,18 @@
+[title Introduction]
+
+This application provides a form to *shorten* URLs. It does this buy storing the URL in the database, and providing an alternative URL which looks up the original based on the primary key and automatically forwards. The primary key is encoded in base64 to save on as many characters as possible.
+
+How short the URL becomes depends on your domain and where you mount the application. Assuming you want to add this application to an existing site, you will probably want to mount it on a url such as [c]/s/[/c] to save on characters
+
+You can shorten URLs on demand with the [tag]shorten[/tag] tag in the namespace [c]http://moyaproject.com/shorturl[/c]. Here's an example:
+
+[code xml]
+<str dst="long_url">https://www.moyaproject.com/blog/post/encrypted-notes-with-moya/</str>
+<shorturl:shorten url="long_url" dst="short_url" />
+[/code]
+
+The value of shorturl will now be something along the lines of [c]http://example.org/s/b[/c].
+
+[h1]Admin Site[/h1]
+
+This library will add a module called 'Short URLs' to the admin site. A table called 'Links' will list the original URLs and the number of visits.

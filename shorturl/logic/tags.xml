@@ -1,0 +1,20 @@
+<moya xmlns="http://moyaproject.com"
+      xmlns:db="http://moyaproject.com/db"
+      xmlns:let="http://moyaproject.com/let">
+
+    <tag name="shorten" synopsis="shorten a URL">
+        <doc>
+            Generate a short version of a URL
+        </doc>
+        <signature>
+            <attribute name="url" type="expression">URL to shorten</attribute>
+            <attribute name="base" type="expression" default=".request.host_url">Base URL (scheme and domain)</attribute>
+        </signature>
+        <db:get-or-create model="#ShortURL" let:url="url" dst="shorturl_object"/>
+        <let urlkey="shorturl_object.id | 'encode_id'" />
+        <return>
+            <get-url name="redirect" let:urlkey="urlkey" base="${base}"/>
+        </return>
+    </tag>
+
+</moya>
